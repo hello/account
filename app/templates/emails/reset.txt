@@ -1,0 +1,4 @@
+Hi {{name}},
+Forgot your password? You can reset it here: {{link}}
+Please reset it right away. This link will expire in 1 day.
+If you did not initiate this password reset request, you can safely ignore this email.

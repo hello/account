@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+    {% from "_formhelpers.html" import render_field %}
+    <form method="post" action="/reset">
+        <dl>
+            {{ render_field(form.email) }}
+        </dl>
+        <p>
+            <input type="submit" value="Reset your password" />
+        </p>
+    </form>
+{% endblock %}

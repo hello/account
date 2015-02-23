@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+
+<p>An email containing instructions to reset your password has been sent. Check your email.</p>
+
+{% if link %}
+    <a href="{{link}}">{{link}}</a>
+{% endif %}
+{% endblock %}

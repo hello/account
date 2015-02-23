@@ -1,0 +1,52 @@
+import requests
+from requests import ConnectionError
+import json
+import logging
+
+logger = logging.getLogger(__name__)
+
+class ApiClient(object):
+    def __init__(self, endpoint, base_url, oauth_token):
+        self.endpoint = endpoint
+        self.base_url = base_url
+        self.headers = headers={'Content-Type' : 'application/json', 'Authorization' : 'Bearer %s' % oauth_token}
+
+    def generate_link(self, email):    
+        try:
+            r = requests.post(self.endpoint, data=json.dumps({'email' : email}), headers=self.headers)
+            if r.status_code == 200:
+                data = r.json()
+                link = "%s/password_update/%s/%s" % (self.base_url, data['uuid'], data['state'])
+                return {'name' : data['name'], 'link' : link}
+        except ConnectionError, e:
+            logging.error(e)
+
+        return None
+
+    def validate_link(self, uuid, state):
+        url = "%s/%s/%s" % (self.endpoint, uuid, state)
+        logging.info("url: %s", url)
+        try:
+            r = requests.get(url, headers=self.headers)
+            logging.info("status code: %d", r.status_code)
+            # api does not return a response here
+            return r.status_code == 204
+        except ConnectionError, e:
+            logging.error(e)
+        logging.info("has expired")
+        return False
+
+    def update(self, uuid, state, password):
+        url = "%s/update" % self.endpoint
+        data = {'uuid' : str(uuid), 'state' : state, 'password' : password}
+        try:
+            r = requests.post(url, data=json.dumps(data), headers=self.headers)
+            if r.status_code in [204, 200]:
+                logging.info("Password successfully updated")
+                return True
+            logging.error("HTTP:%d - %s", r.status_code, r.content)
+        except ConnectionError, e:
+            logging.error(e)
+
+        return False
+
