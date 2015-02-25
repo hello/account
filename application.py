@@ -1,2 +1,2 @@
 from app import app as application
-application.run(debug=app.config['DEBUG'])
+application.run(debug=application.config['DEBUG'])
