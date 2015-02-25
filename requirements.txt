@@ -2,4 +2,3 @@ requests
 flask
 flask-wtf
 Flask-UUID
-mandrill

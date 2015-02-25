@@ -10,20 +10,16 @@ from hello import ApiClient
 
 logger = logging.getLogger(__name__)
 
-apiClient = ApiClient(app.config['API_URL'], app.config['HOST_URL'], app.config['OAUTH_TOKEN'])
+apiClient = ApiClient(app.config['API_URL'], app.config['OAUTH_TOKEN'])
 
 @app.route('/reset', methods=['GET', 'POST'])
 def register():
     form = ResetForm(request.form)
     error_message = ''
     if request.method == 'POST' and form.validate():
-        resp = apiClient.generate_link(form.email.data)
-        if resp is not None:
-            try:
-                emails.send_reset_password(form.email.data, resp['name'], resp['link'])
-                return render_template('reset_success.html')
-            except Exception, e:
-                logging.error(e)
+        resp = apiClient.send_email(form.email.data)
+        if resp:
+            return render_template('reset_success.html')
             
         error_message = 'Something went wrong, please try again.'
 

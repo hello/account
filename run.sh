@@ -1,0 +1,1 @@
+APP_SETTINGS="app.config.ProductionConfig" python application.py

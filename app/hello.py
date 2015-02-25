@@ -6,22 +6,18 @@ import logging
 logger = logging.getLogger(__name__)
 
 class ApiClient(object):
-    def __init__(self, endpoint, base_url, oauth_token):
+    def __init__(self, endpoint, oauth_token):
         self.endpoint = endpoint
-        self.base_url = base_url
         self.headers = headers={'Content-Type' : 'application/json', 'Authorization' : 'Bearer %s' % oauth_token}
 
-    def generate_link(self, email):    
+    def send_email(self, email):    
         try:
             r = requests.post(self.endpoint, data=json.dumps({'email' : email}), headers=self.headers)
-            if r.status_code == 200:
-                data = r.json()
-                link = "%s/password_update/%s/%s" % (self.base_url, data['uuid'], data['state'])
-                return {'name' : data['name'], 'link' : link}
+            return r.status_code == 204
         except ConnectionError, e:
             logging.error(e)
 
-        return None
+        return False
 
     def validate_link(self, uuid, state):
         url = "%s/%s/%s" % (self.endpoint, uuid, state)
