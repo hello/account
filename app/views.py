@@ -3,7 +3,7 @@ from app import app
 from flask import Flask, render_template, redirect, request, url_for
 from requests import ConnectionError
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
-import emails
+
 import logging
 import json
 from hello import ApiClient
