@@ -23,7 +23,7 @@ def register():
     if request.method == 'POST' and form.validate():
         resp = apiClient.send_email(form.email.data)
         if resp:
-            return render_template('reset_success.html')
+            return render_template('reset_success.html', user_email=form.email.data)
             
         error_message = 'Something went wrong, please try again.'
 
