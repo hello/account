@@ -10,6 +10,9 @@ prod public url [https://account.hello.is/](https://account.hello.is/)
 * staging is only accessible via SSH/HTTP from: 199.87.82.114/32 (office IP)
 * prod is only accessible via SSH from: 199.87.82.114/32 (office IP)
 
+## GOOD TO KNOW
+
+Things usually work better in virtualenv, so please make sure you use one.
 
 ## HOW TO
 
