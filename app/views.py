@@ -12,6 +12,10 @@ logger = logging.getLogger(__name__)
 
 apiClient = ApiClient(application.config['API_URL'], application.config['OAUTH_TOKEN'])
 
+@application.route('/', methods=['GET'])
+def home():
+    return redirect(url_for('register'))
+
 @application.route('/reset', methods=['GET', 'POST'])
 def register():
     form = ResetForm(request.form)
