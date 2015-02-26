@@ -1,5 +1,5 @@
 import requests
-from app import app
+from app import application
 from flask import Flask, render_template, redirect, request, url_for
 from requests import ConnectionError
 from wtforms import Form, BooleanField, TextField, PasswordField, validators
@@ -10,9 +10,9 @@ from hello import ApiClient
 
 logger = logging.getLogger(__name__)
 
-apiClient = ApiClient(app.config['API_URL'], app.config['OAUTH_TOKEN'])
+apiClient = ApiClient(application.config['API_URL'], application.config['OAUTH_TOKEN'])
 
-@app.route('/reset', methods=['GET', 'POST'])
+@application.route('/reset', methods=['GET', 'POST'])
 def register():
     form = ResetForm(request.form)
     error_message = ''
@@ -26,16 +26,16 @@ def register():
     return render_template('reset.html', form=form, error_message=error_message)
 
 
-@app.route('/success', methods=['GET'])
+@application.route('/success', methods=['GET'])
 def success():
     return render_template('update_success.html')
 
-@app.route('/error', methods=['GET'])
+@application.route('/error', methods=['GET'])
 def error():
     return render_template('update_error.html'), 500
 
 
-@app.route('/password_update/<uuid:id>/<state>', methods=['GET', 'POST'])
+@application.route('/password_update/<uuid:id>/<state>', methods=['GET', 'POST'])
 def updatePassword(id, state):
     link_is_valid = apiClient.validate_link(id, state)
     if not link_is_valid:

@@ -1,2 +1,4 @@
-from app import app as application
-application.run(host='0.0.0.0',debug=application.config['DEBUG'])
+from app import application
+
+if __name__ == '__main__':
+    application.run(host='0.0.0.0',debug=application.config['DEBUG'])
