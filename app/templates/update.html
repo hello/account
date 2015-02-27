@@ -1,13 +1,15 @@
 {% extends "base.html" %}
 {% block content %}
+		<h2>Choose a new Password</h2>
+		<p>Please enter a new password that is at least six characters in length.</p>
     {% from "_formhelpers.html" import render_field %}
     <form method="post" action="/password_update/{{id}}/{{state}}">
         <dl>
-            {{ render_field(form.password) }}
-            {{ render_field(form.confirm) }}
+            {{ render_field(form.password, class="text") }}
+						<div class="spacer-small"></div>
+            {{ render_field(form.confirm, class="text") }}
         </dl>
-        <p>
-            <input type="submit" value="Update your password" />
-        </p>
+        <div class="spacer-large"></div>
+        <input type="submit" value="Save Password" class="button" />
     </form>
 {% endblock %}
