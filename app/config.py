@@ -4,7 +4,7 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
     API_URL = 'http://localhost:9999/v1/password_reset'
-    OAUTH_TOKEN = '16.b922fd625e69a49d7691cd6562b29f67'
+    OAUTH_TOKEN = '3.58ac8d07e587417da905cd8ab166b6e1'
 
 
 class ProductionConfig(Config):
