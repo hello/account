@@ -33,6 +33,12 @@ body {
 	margin: 0;
 }
 
+@media (max-width: 837px) {
+	div.nav {
+		display: none;
+	}
+}
+
 #top-container {
 	padding-left: 0;
 	background: #f4f4f4;
