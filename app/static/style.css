@@ -22,6 +22,11 @@ body {
 .emphasized {
 	color: #41D7AC !important;
 }
+
+#email {
+    text-transform: lowercase !important;
+}
+
 #top-container {
 	padding-left: 0;
 	background: #f4f4f4;
