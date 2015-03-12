@@ -37,6 +37,9 @@ body {
 	div.nav {
 		display: none;
 	}
+	.dark-nav {
+		margin: 0 auto;
+	}
 }
 
 #top-container {
@@ -47,7 +50,7 @@ body {
 
 #content {
 	background: #fff;
-	margin: 150px auto;
+	margin: 75px auto 0 auto;
 	max-width: 1698px;
 }
 
