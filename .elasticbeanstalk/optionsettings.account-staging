@@ -31,7 +31,7 @@ StaticFiles=/static/=static/
 WSGIPath=application.py
 
 [aws:elasticbeanstalk:container:python:staticfiles]
-/static/=app/static/
+/static/=static/
 
 [aws:elasticbeanstalk:hostmanager]
 LogPublicationControl=false
