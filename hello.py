@@ -12,12 +12,11 @@ class ApiClient(object):
 
     def send_email(self, email):    
         try:
-            r = requests.post(self.endpoint, data=json.dumps({'email' : email}), headers=self.headers)
-            return r.status_code == 204
+            r = requests.post(self.endpoint, data=json.dumps({'email' : email.lower()}), headers=self.headers)
         except ConnectionError, e:
             logging.error(e)
 
-        return False
+        return True
 
     def validate_link(self, uuid, state):
         url = "%s/%s/%s" % (self.endpoint, uuid, state)
