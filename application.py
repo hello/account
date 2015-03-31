@@ -10,11 +10,12 @@ from wtforms import Form, BooleanField, TextField, PasswordField, validators
 import logging
 import json
 from hello import ApiClient
-
+from flask_sslify import SSLify
 
 
 application = Flask(__name__)
 FlaskUUID(application)
+
 application.config.from_object(os.environ['APP_SETTINGS'])
 
 logger = logging.getLogger(__name__)
