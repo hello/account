@@ -10,7 +10,6 @@ from wtforms import Form, BooleanField, TextField, PasswordField, validators
 import logging
 import json
 from hello import ApiClient
-from flask_sslify import SSLify
 
 
 application = Flask(__name__)
@@ -24,7 +23,7 @@ apiClient = ApiClient(application.config['API_URL'], application.config['OAUTH_T
 
 @application.route('/', methods=['GET'])
 def home():
-    return redirect(url_for('register'))
+    return redirect('/register')
 
 @application.route('/reset', methods=['GET', 'POST'])
 def register():
@@ -58,9 +57,9 @@ def updatePassword(id, state):
     form = UpdatePasswordForm(request.form)
     if request.method == 'POST' and form.validate():
         if apiClient.update(id, state, form.password.data):
-            return redirect(url_for('success'))
+            return redirect('/success')
         else:
-            return redirect(url_for('error'))
+            return redirect('/error')
     return render_template('update.html', id=id, state=state, form=form)
 
 
@@ -73,6 +72,7 @@ class UpdatePasswordForm(Form):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
+
 if __name__ == '__main__':
     #port = int(os.environ['PORT'])
     application.run(host='0.0.0.0',debug=application.config['DEBUG'])
