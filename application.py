@@ -15,7 +15,7 @@ from flask_sslify import SSLify
 
 application = Flask(__name__)
 FlaskUUID(application)
-sslify = SSLify(app)
+sslify = SSLify(application)
 
 application.config.from_object(os.environ['APP_SETTINGS'])
 
