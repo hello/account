@@ -23,7 +23,7 @@ apiClient = ApiClient(application.config['API_URL'], application.config['OAUTH_T
 
 @application.route('/', methods=['GET'])
 def home():
-    return redirect('/register')
+    return redirect('/reset')
 
 @application.route('/reset', methods=['GET', 'POST'])
 def register():
