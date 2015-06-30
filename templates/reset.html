@@ -3,11 +3,15 @@
 		<h2>Forgot Password</h2>
 		<p>Enter the email address you used to sign up and we'll send you a link to reset your password.</p>
     {% from "_formhelpers.html" import render_field %}
+    {% if error_message %}
+        <div class="errors">{{error_message}}</div>        
+        <div class="spacer-large"></div>
+    {% endif %}
     <form method="post" action="/reset">
         <dl>
             {{ render_field(form.email, placeholder="name@example.com", class="text") }}
         </dl>
-				<div class="spacer-large"></div>
+		<div class="spacer-large"></div>
         <input type="submit" value="Reset Password" class="button" />
     </form>
 {% endblock %}
