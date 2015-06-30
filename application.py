@@ -1,4 +1,3 @@
-
 import os
 from flask.ext.uuid import FlaskUUID
 import config
@@ -72,6 +71,7 @@ class UpdatePasswordForm(Form):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
+    
 if __name__ == '__main__':
     port = int(os.environ['PORT'])
     application.run(host='0.0.0.0',debug=application.config['DEBUG'], port=port)
