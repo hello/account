@@ -1,4 +1,3 @@
-
 import os
 from flask.ext.uuid import FlaskUUID
 import config
@@ -32,10 +31,9 @@ def register():
     if request.method == 'POST' and form.validate():
         resp = apiClient.send_email(form.email.data)
         if resp:
-            return render_template('reset_success.html', user_email=form.email.data)
+            return render_template('reset_success.html', user_email=form.email.data.lower())
             
-        error_message = 'Something went wrong, please try again.'
-
+        error_message = 'Please try again, make sure email is correct'
     return render_template('reset.html', form=form, error_message=error_message)
 
 
@@ -72,6 +70,7 @@ class UpdatePasswordForm(Form):
         validators.EqualTo('confirm', message='Passwords must match')
     ])
     confirm = PasswordField('Repeat Password')
+    
 if __name__ == '__main__':
     port = int(os.environ['PORT'])
     application.run(host='0.0.0.0',debug=application.config['DEBUG'], port=port)

@@ -4,7 +4,7 @@ class Config(object):
     CSRF_ENABLED = True
     SECRET_KEY = 'this-really-needs-to-be-changed'
     API_URL = 'http://localhost:9999/v1/password_reset'
-    OAUTH_TOKEN = '3.58ac8d07e587417da905cd8ab166b6e1'
+    OAUTH_TOKEN = '3.81e6a3ee26454d62807f90295e383359'
 
 
 class ProductionConfig(Config):
@@ -12,11 +12,13 @@ class ProductionConfig(Config):
     API_URL = 'https://api.hello.is/v1/password_reset'
     OAUTH_TOKEN = '6.4b2ff43787615997ac6bc055888e22ed'
 
+
 class StagingConfig(Config):
     DEVELOPMENT = True
     DEBUG = True
     API_URL = 'https://dev-api.hello.is/v1/password_reset'
-    OAUTH_TOKEN = '18.87dd783307e7ecd22e430575cd159148'
+    OAUTH_TOKEN = '18.b7a93325d5824901a0408d3682153b1f'
+
 
 class DevelopmentConfig(Config):
     DEVELOPMENT = True

@@ -22,14 +22,35 @@ body {
 .emphasized {
 	color: #41D7AC !important;
 }
+
+#email {
+    text-transform: lowercase !important;
+}
+
+#content a.order {
+	font-size: 12px;
+	padding: 10px;
+	margin: 0;
+}
+
+@media (max-width: 837px) {
+	div.nav {
+		display: none;
+	}
+	.dark-nav {
+		margin: 0 auto;
+	}
+}
+
 #top-container {
 	padding-left: 0;
 	background: #f4f4f4;
+	max-width: 1698px;
 }
 
 #content {
 	background: #fff;
-	margin: 150px auto;
+	margin: 75px auto 0 auto;
 	max-width: 1698px;
 }
 
