@@ -27,6 +27,8 @@ AWSSecretKey=<your secret>
 export PATH=$PATH:<path to unzipped EB CLI package>/eb/macosx/python2.7
 ```
 
+- Run `sh <path to unzipped EB CLI package>/AWSDevTools/Linux/AWSDevTools-RepositorySetup.sh`
+
 ## HOW TO
 
 
