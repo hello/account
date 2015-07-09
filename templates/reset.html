@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block content %}
 		<h2>Forgot Password</h2>
-		<p>Enter the email address you used to sign up and we'll send you a link to reset your password.</p>
+		<p id="prelude">Enter the email address you used to sign up and we'll send you a link to reset your password.</p>
     {% from "_formhelpers.html" import render_field %}
     {% if error_message %}
         <div class="errors">{{error_message}}</div>        
