@@ -23,7 +23,7 @@ logger = logging.getLogger(__name__)
 apiClient = ApiClient(application.config['API_URL'], application.config['OAUTH_TOKEN'])
 
 
-@app.after_request
+@application.after_request
 def sanitizing(response):
     response.headers["X-Frame-Options"] = "SAMEORIGIN"
     return response
