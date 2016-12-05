@@ -2,7 +2,7 @@
 {% block content %}
 
 <h2>Check your email</h2>
-<p>We’ve sent an email to <span class="emphasized">{{user_email}}</span> with a link to reset your password.</p>
+<p>We’ve sent an email to <span class="emphasized">{{user_email|e}}</span> with a link to reset your password.</p>
 
 {% if link %}
     <a href="{{link}}">{{link}}</a>
