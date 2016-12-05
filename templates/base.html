@@ -4,21 +4,20 @@
 		<title>Reset Password &ndash; Hello</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		
-		
 		<link rel="stylesheet" type="text/css" href="/static/base.css">
 		<link rel="stylesheet" type="text/css" href="/static/style.css">
-
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<link rel="stylesheet" type="text/css" href="/static/pure.min.css">
 		
 		<script src="//use.typekit.net/mxr4prq.js"></script>
+		<script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+		<script src="/static/extra.js"></script>
   </head>
-  <body>
-  		{% include 'header.html' %}
+  <body onload="init();">
 		<div id="content">
+			{% include 'header.html' %}
 			<section>
 			  {% block content %}{% endblock %}
 			</section>
 		</div>
-		{% include 'footer.html' %}
 	</body>
 </html>
