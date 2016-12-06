@@ -3,4 +3,3 @@ requests
 flask
 flask-wtf
 Flask-UUID
-Flask-SSLify==0.1.4
