@@ -14,14 +14,12 @@ class ProductionConfig(Config):
 
 
 class StagingConfig(Config):
-    DEVELOPMENT = True
     DEBUG = True
     API_URL = 'https://dev-api.hello.is/v1/password_reset'
     OAUTH_TOKEN = '18.b7a93325d5824901a0408d3682153b1f'
 
 
 class DevelopmentConfig(Config):
-    DEVELOPMENT = True
     DEBUG = True
 
 

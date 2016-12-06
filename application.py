@@ -42,6 +42,7 @@ def register():
             return render_template('reset_success.html', user_email=form.email.data.lower())
             
         error_message = 'Please try again, make sure email is correct'
+
     return render_template('reset.html', form=form, error_message=error_message)
 
 
