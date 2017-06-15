@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Export your data</h2>
+    {% if error %}
+	<p class="errors">Something went wrong. Mind trying again?</p>
+	{% else %}
+		<p id="prelude">Click the export button to start exporting your sleep data.</p>
+    {% endif %}
+	
+    <form method="POST" action="/export/{{ext_id}}">
+        <input type="submit" value="Export my sleep data" class="button" />
+
+    </form>
+{% endblock %}
