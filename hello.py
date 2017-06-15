@@ -11,15 +11,16 @@ class ApiClient(object):
         self.headers = headers={'Content-Type' : 'application/json', 'Authorization' : 'Bearer %s' % oauth_token}
 
     def send_email(self, email):    
+        url = "%spassword_reset/" % self.endpoint
         try:
-            r = requests.post(self.endpoint, data=json.dumps({'email' : email.lower()}), headers=self.headers)
+            r = requests.post(url, data=json.dumps({'email' : email.lower()}), headers=self.headers)
         except ConnectionError, e:
             logging.error(e)
 
         return True
 
     def validate_link(self, uuid, state):
-        url = "%s/%s/%s" % (self.endpoint, uuid, state)
+        url = "%spassword_reset/%s/%s" % (self.endpoint, uuid, state)
         logging.info("url: %s", url)
         try:
             r = requests.get(url, headers=self.headers)
@@ -32,7 +33,7 @@ class ApiClient(object):
         return False
 
     def update(self, uuid, state, password):
-        url = "%s/update" % self.endpoint
+        url = "%spassword_reset/update" % self.endpoint
         data = {'uuid' : str(uuid), 'state' : state, 'password' : password}
         try:
             r = requests.post(url, data=json.dumps(data), headers=self.headers)
@@ -44,4 +45,17 @@ class ApiClient(object):
             logging.error(e)
 
         return False
+
+    def export(self, uuid):
+        url = "%sexport_data/%s" % (self.endpoint, uuid)
+        try:
+            r = requests.post(url, data={}, headers=self.headers)
+            if r.status_code in [204, 200]:
+                logging.info("Export data trigger successful")
+                return True
+            logging.error("HTTP:%d - %s", r.status_code, r.content)
+        except ConnectionError, e:
+            logging.error(e)
+
+        return False        
 

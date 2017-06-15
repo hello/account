@@ -45,6 +45,18 @@ def register():
     return render_template('reset.html', form=form, error_message=error_message)
 
 
+@application.route('/export/<uuid:ext_id>', methods=['GET'])
+def export_view(ext_id):
+    return render_template('export.html', ext_id=ext_id)
+
+@application.route('/export/<uuid:ext_id>', methods=['POST'])
+def export_submit(ext_id):
+    resp = apiClient.export(ext_id)
+    if resp:
+        return render_template('thankyou.html')
+    return render_template('export.html', ext_id=ext_id, error=True)
+
+
 @application.route('/success', methods=['GET'])
 def success():
     return render_template('update_success.html')
