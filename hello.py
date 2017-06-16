@@ -48,9 +48,10 @@ class ApiClient(object):
 
     def export(self, uuid):
         url = "%sexport_data/%s" % (self.endpoint, uuid)
+        print url
         try:
             r = requests.post(url, data={}, headers=self.headers)
-            if r.status_code in [204, 200]:
+            if r.status_code in [204, 200, 404]:
                 logging.info("Export data trigger successful")
                 return True
             logging.error("HTTP:%d - %s", r.status_code, r.content)
